@@ -121,3 +121,17 @@ function turnLeft(rover) {
 console.log("New Rover Direction: [" + rover.direction + "]");
 }
 turnLeft(myRover);
+
+
+while (true) {
+  var controller= prompt("Forward/Backward/Right/Left?");
+    if (controller === 'F'){
+      goForward(myRover);
+    }else if (controller ==='B') {
+      goBack(myRover);
+    }else if (controller === 'R') {
+      turnRight(myRover);
+    }else if (Controller === 'L'){
+      turnLeft(myRover);
+    }
+}
