@@ -7,21 +7,20 @@ var myRover = {
   direction: 'N'
 };
 console.log(myRover);
-//Lets define our planet first :) MARS!!!
-//Grid 10*10 2 arrays made with 2 "for loops"
-var grid=[];
 
-for (var x = 0; x <= 10; x++) {
-  (myRover.position[0])=[x];
-for (var y = 0; y <= 10; y++) {
-  (myRover.position[1])=[y];
-}}
+//Declaring obstacles
 
-console.log(grid);
+var myObstacle ={
+  position: [10, 10]
+};
+console.log(myObstacle);
+
+//Checking for an obstacle
 
 
 //Default code
 function goForward(rover) {
+
   switch(rover.direction) {
     case 'N':
       rover.position[1]++;
@@ -41,8 +40,10 @@ function goForward(rover) {
 }
 goForward(myRover);
 
+
 //Same code for forward but inverted
 function goBack(rover) {
+  
   switch(rover.direction) {
     case 'N':
       rover.position[1]--;
@@ -106,6 +107,19 @@ console.log("New Rover Direction: [" + rover.direction + "]");
 turnLeft(myRover);
 
 
+
+//Lets define our planet first :) MARS!!!
+//Grid 10*10 2 arrays made with 2 "for loops"
+var grid=[];
+
+for (var x = 0; x <= 10; x++) {
+  (myRover.position[0])=[0];
+for (var y = 0; y <= 10; y++) {
+  (myRover.position[1])=[0];
+}}
+
+console.log(grid);
+
 //Mars is a planet (sphere) so after 10 goes back to 0
 //Declare variables to do roundTrip in X and Y (2 variables)
 
@@ -137,7 +151,6 @@ var usersInput = prompt("Forward/Backward/Right/Left?");
       var usersInputToUpperCase = usersInput.toUpperCase();
 console.log(usersInputToUpperCase);
 var text =[];
-
   for (i = 0 ; i  < usersInputToUpperCase.length ; i++) {
       text = usersInputToUpperCase[i];
       //translate user's input into array
