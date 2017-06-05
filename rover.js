@@ -1,4 +1,13 @@
+//Lets define our planet first :) MARS!!!
+//Grid 10*10 2 arrays made with 2 "for loops"
+var grid=[];
 
+for (var x = 0; x <= 10; x++) {
+  for (var y = 0; y <= 10; y++) {
+    grid= this.position;
+}}
+
+console.log(grid);
 
 
 //Create our rover
@@ -11,16 +20,22 @@ console.log(myRover);
 //Declaring obstacles
 
 var myObstacle ={
-  position: [10, 10]
+  position: [2, 2]
 };
 console.log(myObstacle);
 
 //Checking for an obstacle
-
+function check(myObstacle){
+  if(myObstacle.position[x]===true){
+    console.log("obstacle!");
+  }else if (myObstacle.position[y]===true) {
+    console.log("obstacle!");
+  }
+}
 
 //Default code
 function goForward(rover) {
-
+  check(myObstacle);
   switch(rover.direction) {
     case 'N':
       rover.position[1]++;
@@ -43,7 +58,7 @@ goForward(myRover);
 
 //Same code for forward but inverted
 function goBack(rover) {
-  
+
   switch(rover.direction) {
     case 'N':
       rover.position[1]--;
@@ -108,17 +123,7 @@ turnLeft(myRover);
 
 
 
-//Lets define our planet first :) MARS!!!
-//Grid 10*10 2 arrays made with 2 "for loops"
-var grid=[];
 
-for (var x = 0; x <= 10; x++) {
-  (myRover.position[0])=[0];
-for (var y = 0; y <= 10; y++) {
-  (myRover.position[1])=[0];
-}}
-
-console.log(grid);
 
 //Mars is a planet (sphere) so after 10 goes back to 0
 //Declare variables to do roundTrip in X and Y (2 variables)
@@ -150,22 +155,23 @@ roundTrip(myRover);
 var usersInput = prompt("Forward/Backward/Right/Left?");
       var usersInputToUpperCase = usersInput.toUpperCase();
 console.log(usersInputToUpperCase);
-var text =[];
-  for (i = 0 ; i  < usersInputToUpperCase.length ; i++) {
-      text = usersInputToUpperCase[i];
-      //translate user's input into array
 
-                if (text === 'F'){
-                  goForward(myRover);
-                  roundTrip(myRover);
-                } else if (text ==='B') {
-                  goBack(myRover);
-                  roundTrip(myRover);
-                } else if (text === 'R') {
-                  turnRight(myRover);
-                  roundTrip(myRover);
-                } else if (text === 'L'){
-                  turnLeft(myRover);
-                  roundTrip(myRover);
-                }
-}
+  var text =[];
+    for (i = 0 ; i  < usersInputToUpperCase.length ; i++) {
+        text = usersInputToUpperCase[i];
+        //translate user's input into array
+
+                  if (text === 'F'){
+                    goForward(myRover);
+                    roundTrip(myRover);
+                  } else if (text ==='B') {
+                    goBack(myRover);
+                    roundTrip(myRover);
+                  } else if (text === 'R') {
+                    turnRight(myRover);
+                    roundTrip(myRover);
+                  } else if (text === 'L'){
+                    turnLeft(myRover);
+                    roundTrip(myRover);
+                  }
+  }
