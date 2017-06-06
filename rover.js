@@ -1,10 +1,12 @@
 //Lets define our planet first :) MARS!!!
 //Grid 10*10 2 arrays made with 2 "for loops"
-var grid=[];
+
+var grid=new Array(10);
 
 for (var x = 0; x <= 10; x++) {
+  grid[x]="";
   for (var y = 0; y <= 10; y++) {
-    grid= this.position;
+    grid[x][y]= "" ;
 }}
 
 console.log(grid);
@@ -19,23 +21,24 @@ console.log(myRover);
 
 //Declaring obstacles
 
-var myObstacle ={
-  position: [2, 2]
-};
+var myObstacle = [[0][1]];
 console.log(myObstacle);
 
 //Checking for an obstacle
-function check(myObstacle){
-  if(myObstacle.position[x]===true){
-    console.log("obstacle!");
-  }else if (myObstacle.position[y]===true) {
-    console.log("obstacle!");
-  }
-}
+function check(rover){
+  switch (myObstacle) {
+    case myObstacle=true:
+      console.log("obstacle!");
+      break;
+    case myObstacle=false:
+
+      break;
+    default:
+}}
 
 //Default code
 function goForward(rover) {
-  check(myObstacle);
+  check(myRover); //check prior to move for an object
   switch(rover.direction) {
     case 'N':
       rover.position[1]++;
@@ -50,14 +53,18 @@ function goForward(rover) {
       rover.position[0]--;
       break;
   }
+  if (roundTrip(myRover)===true) {
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  }else {
+
+  }
 }
 goForward(myRover);
 
 
 //Same code for forward but inverted
 function goBack(rover) {
+  check(myRover); //check prior to move for an object
 
   switch(rover.direction) {
     case 'N':
@@ -73,7 +80,13 @@ function goBack(rover) {
       rover.position[0]++;
       break;
   }
-  console.log("New Rover Position: [" + rover.position[0] +", "+ rover.position[1] + "]");
+
+  if (roundTrip(myRover)===true) {
+
+  }else {
+
+  }
+
 
 }
 goBack(myRover);
@@ -163,15 +176,11 @@ console.log(usersInputToUpperCase);
 
                   if (text === 'F'){
                     goForward(myRover);
-                    roundTrip(myRover);
                   } else if (text ==='B') {
                     goBack(myRover);
-                    roundTrip(myRover);
                   } else if (text === 'R') {
                     turnRight(myRover);
-                    roundTrip(myRover);
                   } else if (text === 'L'){
                     turnLeft(myRover);
-                    roundTrip(myRover);
                   }
   }
