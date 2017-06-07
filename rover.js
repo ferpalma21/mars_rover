@@ -1,16 +1,27 @@
 //Lets define our planet first :) MARS!!!
 //Grid 10*10 2 arrays made with 2 "for loops"
 
-var grid=new Array(10);
+var grid=[];
 
 for (var x = 0; x <= 10; x++) {
   grid[x]="";
   for (var y = 0; y <= 10; y++) {
     grid[x][y]= "" ;
 }}
-
 console.log(grid);
 
+//Setting obstacles
+
+var userObstacles = prompt("How many Obstacles you want?");
+for(var z = 0;z <userObstacles; z++ ){
+  var setObstacle=new Array();
+  var locationX=prompt("Location on X");
+  var locationY=prompt("Location on Y");
+  setObstacle[0]=locationX;
+  setObstacle[1]=locationY;
+  grid.push(setObstacle);
+  console.log(setObstacle);
+}
 
 //Create our rover
 var myRover = {
@@ -19,27 +30,20 @@ var myRover = {
 };
 console.log(myRover);
 
-//Declaring obstacles
-
-var myObstacle = [[0][1]];
-console.log(myObstacle);
-
 //Checking for an obstacle
-function check(rover){
-  switch (myObstacle) {
-    case myObstacle=true:
-      console.log("obstacle!");
-      break;
-    case myObstacle=false:
+ function check(rover){
+  for(var i = 0; i < grid.length; i++){
+    if(grid[i][0]==rover.position[0] &&  grid[i][1]==rover.position[1]){
+      console.log("Obstacle!");
+      return;
+    }else{
 
-      break;
-    default:
-}}
-
+    }
+}
+}
 //Default code
 function goForward(rover) {
-  check(myRover); //check prior to move for an object
-  switch(rover.direction) {
+    switch(rover.direction) {
     case 'N':
       rover.position[1]++;
       break;
@@ -57,15 +61,13 @@ function goForward(rover) {
 
   }else {
 
-  }
+}
 }
 goForward(myRover);
 
 
 //Same code for forward but inverted
 function goBack(rover) {
-  check(myRover); //check prior to move for an object
-
   switch(rover.direction) {
     case 'N':
       rover.position[1]--;
@@ -141,8 +143,8 @@ turnLeft(myRover);
 //Mars is a planet (sphere) so after 10 goes back to 0
 //Declare variables to do roundTrip in X and Y (2 variables)
 
-function roundTrip(rover) {  //Lets start with X axle
-
+function roundTrip(rover) {
+//Lets start with X axle
 var roundTripX = rover.position[0];
 if (roundTripX > 10){
     roundTripX = rover.position[0]=0;
@@ -168,19 +170,18 @@ roundTrip(myRover);
 var usersInput = prompt("Forward/Backward/Right/Left?");
       var usersInputToUpperCase = usersInput.toUpperCase();
 console.log(usersInputToUpperCase);
-
   var text =[];
     for (i = 0 ; i  < usersInputToUpperCase.length ; i++) {
         text = usersInputToUpperCase[i];
         //translate user's input into array
-
-                  if (text === 'F'){
-                    goForward(myRover);
-                  } else if (text ==='B') {
-                    goBack(myRover);
-                  } else if (text === 'R') {
-                    turnRight(myRover);
-                  } else if (text === 'L'){
-                    turnLeft(myRover);
-                  }
-  }
+          check(myRover);
+          if (text === 'F'){
+            goForward(myRover);
+          } else if (text ==='B') {
+            goBack(myRover);
+          } else if (text === 'R') {
+            turnRight(myRover);
+          } else if (text === 'L'){
+            turnLeft(myRover);
+          }
+}
