@@ -11,17 +11,16 @@ for (var x = 0; x <= 10; x++) {
 console.log(grid);
 
 //Setting obstacles
-
-var userObstacles = prompt("How many Obstacles you want?");
-for(var z = 0;z <userObstacles; z++ ){
+//var userObstacles = prompt("How many Obstacles you want?");
+//for(var z = 0;z <userObstacles; z++ ){
   var setObstacle=new Array();
-  var locationX=prompt("Location on X");
-  var locationY=prompt("Location on Y");
+  var locationX=1;//prompt("Location on X");
+  var locationY=0;//prompt("Location on Y");
   setObstacle[0]=locationX;
   setObstacle[1]=locationY;
   grid.push(setObstacle);
   console.log(setObstacle);
-}
+//}
 
 //Create our rover
 var myRover = {
@@ -34,7 +33,7 @@ console.log(myRover);
  function check(rover){
   for(var i = 0; i < grid.length; i++){
     if(grid[i][0]==rover.position[0] &&  grid[i][1]==rover.position[1]){
-      console.log("Obstacle!");
+      console.log("Obstacle");
       return;
     }else{
 
@@ -42,6 +41,11 @@ console.log(myRover);
 }
 }
 //Default code
+//Call position
+function callPosition(rover){
+    console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+    console.log("New Rover Direction: [" + rover.direction + "]");
+}
 function goForward(rover) {
     switch(rover.direction) {
     case 'N':
@@ -56,6 +60,7 @@ function goForward(rover) {
     case 'W':
       rover.position[0]--;
       break;
+
   }
   if (roundTrip(myRover)===true) {
 
@@ -63,7 +68,7 @@ function goForward(rover) {
 
 }
 }
-goForward(myRover);
+
 
 
 //Same code for forward but inverted
@@ -88,10 +93,8 @@ function goBack(rover) {
   }else {
 
   }
-
-
 }
-goBack(myRover);
+
 
 //function change Direction right
 
@@ -111,9 +114,8 @@ function turnRight(rover) {
       break;
   }
 
-console.log("New Rover Direction: [" + rover.direction + "]");
 }
-turnRight(myRover);
+
 
 
 function turnLeft(rover) {
@@ -132,13 +134,8 @@ function turnLeft(rover) {
       break;
   }
 
-console.log("New Rover Direction: [" + rover.direction + "]");
+
 }
-turnLeft(myRover);
-
-
-
-
 
 //Mars is a planet (sphere) so after 10 goes back to 0
 //Declare variables to do roundTrip in X and Y (2 variables)
@@ -159,12 +156,7 @@ var roundTripY = rover.position[1];
   }else if (roundTripY < 0) {
     roundTripY = rover.position[1]=10;
   }
-  //print out the position after the overlap setting
-      console.log("New Rover Position: [" + roundTripX + ", " + roundTripY + "]");
 }
-roundTrip(myRover);
-
-
 
 //Users Input
 var usersInput = prompt("Forward/Backward/Right/Left?");
@@ -184,4 +176,5 @@ console.log(usersInputToUpperCase);
           } else if (text === 'L'){
             turnLeft(myRover);
           }
+          callPosition(myRover);
 }
