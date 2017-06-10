@@ -11,13 +11,13 @@ for (var x = 0; x < 10; x++) {
 console.log(grid);
 
 //Setting obstacles
-//var userObstacles = prompt("How many Obstacles you want?");
-// for(var z = 0;z <userObstacles; z++ ){
-  var locationX=0;//prompt("Location on X");
-  var locationY=1;//prompt("Location on Y");
+var userObstacles = prompt("How many Obstacles you want?");
+for(var z = 0;z <userObstacles; z++ ){
+  var locationX=Math.floor(Math.random()*10);
+  var locationY=Math.floor(Math.random()*10);
   grid [locationX][locationY]=1;
   console.log(grid[locationX][locationY]);
-//}
+}
 
 //Create our rover
 var myRover = {
@@ -29,24 +29,15 @@ console.log(myRover);
 
 /*
 var myRover2 = {
-  position: Math.floor(Math.random)*10,
+  position: [Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
   direction: 'N',
   name: "rover2"
 };
 */
 
-function reverseMovement(rover){
-    break;
-}
 //Checking for an obstacle
  function check(rover){
-  for(var i = 0; i < grid.length; i++){
-    if(grid[myRover.position[0]myrover.position[1]]===1){
-      console.log("Obstacle in position: ["+rover.position[0]+", "+rover.position[1]+"]");
-      reverseMovement(myRover);
-      break;
-    }
-}
+    return grid[rover.position[0]][rover.position[1]]===1;
 }
 
 //Call position
@@ -60,19 +51,15 @@ function goForward(rover) {
     switch(rover.direction) {
     case 'N':
       rover.position[1]++;
-      check(myRover);
       break;
     case 'E':
       rover.position[0]++;
-      check(myRover);
       break;
     case 'S':
       rover.position[1]--;
-      check(myRover);
       break;
     case 'W':
       rover.position[0]--;
-      check(myRover);
       break;
 
   }
@@ -90,22 +77,17 @@ function goBack(rover) {
   switch(rover.direction) {
     case 'N':
       rover.position[1]--;
-      check(myRover);
       break;
     case 'E':
       rover.position[0]--;
-      check(myRover);
       break;
     case 'S':
       rover.position[1]++;
-      check(myRover);
       break;
     case 'W':
       rover.position[0]++;
-      check(myRover);
       break;
   }
-
   if (roundTrip(myRover)===true) {
 
   }else {
@@ -184,18 +166,30 @@ console.log(usersInputToUpperCase);
     for (i = 0 ; i  < usersInputToUpperCase.length ; i++) {
         text = usersInputToUpperCase[i];
         //translate user's input into array
-        check(myRover);
-          if (text === 'F'){
+        var oldPositionX = myRover.position[0];
+        var oldPositionY = myRover.position[1];
+
+        switch (text) {
+          case 'F':
             goForward(myRover);
-          } else if (text ==='B') {
-            check(myRover);
+            break;
+          case 'B':
             goBack(myRover);
-          } else if (text === 'R') {
+            break;
+          case 'R':
             turnRight(myRover);
-          } else if (text === 'L'){
+            break;
+          case 'L':
             turnLeft(myRover);
-          }
-
-
+            break;
+          default:
+            console.log("Order unexist");
+            break;
+        }
+        if (check(myRover)){
+          console.log("Obstaculo!!!!");
+          myRover.position = [oldPositionX, oldPositionY];
+        }else {
+          callPosition(myRover);
+        }
 }
-callPosition(myRover);
